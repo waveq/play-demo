@@ -21,10 +21,12 @@ public class Personn extends Model {
     public long id;
 
     @Required
+    @Column(length = 100)
     @MaxLength(100)
     public String name;
 
     @Required
+    @Column(length = 100)
     @MaxLength(100)
     public String lastName;
 
@@ -32,12 +34,14 @@ public class Personn extends Model {
     public Date dateOfBirth;
 
     @Required
+    @Pattern(".+\\@.+\\..+")
     public String email;
 
     @Required
     public int favoriteDb;
 
     @Required
+    @Column(length = 5000)
     @MaxLength(5000)
     public String notes;
 
