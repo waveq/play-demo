@@ -1,0 +1,26 @@
+@(myForm: Form[Personn])(message: String)
+
+@import helper.twitterBootstrap._
+
+@main("Play demo") {
+
+
+<div class="jumbotron">
+    <h1>Welcome!</h1>
+    <div class="well well-lg">
+        @helper.form(action = routes.Application.addPerson() ) {
+        @helper.inputText(myForm("name"), '_label -> "Name", 'size -> 100)
+        @helper.inputText(myForm("lastName"), '_label -> "Last name", 'size -> 100)
+        @helper.select(myForm("favoriteDb"), options = Seq("1"->"PostgreSql", "2"->"MySql", "3"->"Oracle", "4" ->"MsSql"), '_label -> "Favorite database")
+        @helper.inputDate(myForm("dateOfBirth"), '_label -> "Date of birth")
+        @helper.inputText(myForm("email"), '_label -> "E-mail", 'size -> 100)
+        @helper.textarea(field = myForm("notes"), '_label -> "Notes")
+        <input type="submit" class="btn btn-primary btn-lg" >
+        }
+
+        <h2>@message</h2>
+    </div>
+
+
+</div>
+}

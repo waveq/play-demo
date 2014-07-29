@@ -1,0 +1,19 @@
+html, body {
+    height: 100%;
+    width: 90%;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+textarea {
+    width: 500px;
+    height: 100px;
+}
