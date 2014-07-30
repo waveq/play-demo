@@ -39,7 +39,8 @@ public class ApplicationTest {
     @Test
     public void testAddPerson_ValuesRequired() {
         running(fakeApplication(), () -> {
-            Result result = callAction(routes.ref.Application.addPerson(), new FakeRequest().withFormUrlEncodedBody(ImmutableMap.of("lastName", LAST_NAME)));
+            Result result = callAction(routes.ref.Application.addPerson(), new FakeRequest()
+                    .withFormUrlEncodedBody(ImmutableMap.of("lastName", LAST_NAME)));
             assertThat(contentAsString(result)).contains("This field is required");
         });
     }
@@ -47,8 +48,10 @@ public class ApplicationTest {
     @Test
     public void testAddPerson_TooLongName() {
         running(fakeApplication(), () -> {
-            Result result = callAction(routes.ref.Application.addPerson(), new FakeRequest().withFormUrlEncodedBody(ImmutableMap.of(
-                    "name", LONG_NAME, "lastName", LAST_NAME, "email", EMAIL, "dateOfBirth", DATE_OF_BIRTH, "favoriteDb", FAVORITE_DB)));
+            Result result = callAction(routes.ref.Application.addPerson(), new FakeRequest()
+                    .withFormUrlEncodedBody(ImmutableMap.of(
+                    "name", LONG_NAME, "lastName", LAST_NAME, "email", EMAIL, "dateOfBirth",
+                            DATE_OF_BIRTH, "favoriteDb", FAVORITE_DB)));
             assertThat(contentAsString(result)).contains("Maximum length is 100");
         });
     }
@@ -56,8 +59,10 @@ public class ApplicationTest {
     @Test
     public void testAddPerson_InvalidEmail() {
         running(fakeApplication(), () -> {
-            Result result = callAction(routes.ref.Application.addPerson(), new FakeRequest().withFormUrlEncodedBody(ImmutableMap.of(
-                    "name", NAME, "lastName", LAST_NAME, "email", INVALID_EMAIL, "dateOfBirth", DATE_OF_BIRTH, "favoriteDb", FAVORITE_DB)));
+            Result result = callAction(routes.ref.Application.addPerson(), new FakeRequest()
+                    .withFormUrlEncodedBody(ImmutableMap.of(
+                    "name", NAME, "lastName", LAST_NAME, "email", INVALID_EMAIL, "dateOfBirth",
+                            DATE_OF_BIRTH, "favoriteDb", FAVORITE_DB)));
             assertThat(contentAsString(result)).contains("Must satisfy .+\\@.+\\..+");
         });
     }
@@ -65,8 +70,10 @@ public class ApplicationTest {
     @Test
     public void testAddPerson_OK() {
         running(fakeApplication(), () -> {
-            Result result = callAction(routes.ref.Application.addPerson(), new FakeRequest().withFormUrlEncodedBody(ImmutableMap.of(
-                    "name", NAME, "lastName", LAST_NAME, "email", EMAIL, "dateOfBirth", DATE_OF_BIRTH, "favoriteDb", FAVORITE_DB)));
+            Result result = callAction(routes.ref.Application.addPerson(), new FakeRequest()
+                    .withFormUrlEncodedBody(ImmutableMap.of(
+                    "name", NAME, "lastName", LAST_NAME, "email", EMAIL, "dateOfBirth",
+                            DATE_OF_BIRTH, "favoriteDb", FAVORITE_DB)));
             assertThat(contentAsString(result)).contains("Person has been added.");
         });
     }
