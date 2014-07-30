@@ -40,7 +40,7 @@ public class Personn extends Model {
     @Required
     public int favoriteDb;
 
-    @Required
+//    @Required
     @Column(length = 5000)
     @MaxLength(5000)
     public String notes;

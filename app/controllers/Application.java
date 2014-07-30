@@ -16,12 +16,11 @@ public class Application extends Controller {
         return ok();
     }
 
-    @Transactional
     public static Result addPerson() {
         Form<Personn> filledForm = Form.form(Personn.class).bindFromRequest();
 
         if(filledForm.hasErrors()){
-            return badRequest(index.render(filledForm, "Errors in form"));
+            return badRequest(index.render(filledForm, "Errors in form."));
         }
 
         Personn p = filledForm.get();
