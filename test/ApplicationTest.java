@@ -22,7 +22,9 @@ public class ApplicationTest {
     private static final String FAVORITE_DB = "2";
     private static final String NOTES = "Lorem ipsum na na na.";
 
-    private static final String LONG_NAME = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+    private static final String LONG_NAME = "AAAAAAAAAAAAAAAAAAAAAAA" +
+            "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" +
+            "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
     private static final String INVALID_EMAIL = "abc";
 
     @Test
@@ -68,6 +70,4 @@ public class ApplicationTest {
             assertThat(contentAsString(result)).contains("Person has been added.");
         });
     }
-
-
 }
