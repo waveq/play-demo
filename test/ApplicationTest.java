@@ -38,7 +38,7 @@ public class ApplicationTest {
 
     @Test
     public void testAddPerson_ValuesRequired() {
-        running(fakeApplication(), () -> {
+        running(fakeApplication(inMemoryDatabase()) , () -> {
             Result result = callAction(routes.ref.Application.addPerson(), new FakeRequest()
                     .withFormUrlEncodedBody(ImmutableMap.of("lastName", LAST_NAME)));
             assertThat(contentAsString(result)).contains("This field is required");
@@ -47,7 +47,7 @@ public class ApplicationTest {
 
     @Test
     public void testAddPerson_TooLongName() {
-        running(fakeApplication(), () -> {
+        running(fakeApplication(inMemoryDatabase()), () -> {
             Result result = callAction(routes.ref.Application.addPerson(), new FakeRequest()
                     .withFormUrlEncodedBody(ImmutableMap.of(
                     "name", LONG_NAME, "lastName", LAST_NAME, "email", EMAIL, "dateOfBirth",
@@ -58,7 +58,7 @@ public class ApplicationTest {
 
     @Test
     public void testAddPerson_InvalidEmail() {
-        running(fakeApplication(), () -> {
+        running(fakeApplication(inMemoryDatabase()), () -> {
             Result result = callAction(routes.ref.Application.addPerson(), new FakeRequest()
                     .withFormUrlEncodedBody(ImmutableMap.of(
                     "name", NAME, "lastName", LAST_NAME, "email", INVALID_EMAIL, "dateOfBirth",
@@ -69,7 +69,7 @@ public class ApplicationTest {
 
     @Test
     public void testAddPerson_OK() {
-        running(fakeApplication(), () -> {
+        running(fakeApplication(inMemoryDatabase()), () -> {
             Result result = callAction(routes.ref.Application.addPerson(), new FakeRequest()
                     .withFormUrlEncodedBody(ImmutableMap.of(
                     "name", NAME, "lastName", LAST_NAME, "email", EMAIL, "dateOfBirth",
